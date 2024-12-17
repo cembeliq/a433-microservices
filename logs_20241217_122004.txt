@@ -1,0 +1,103 @@
+item-app-1  | 2024-12-17T05:17:03.922867663Z 
+item-app-1  | 2024-12-17T05:17:03.922930271Z > docker-software-delivery@1.0.0 start /app
+item-app-1  | 2024-12-17T05:17:03.922936499Z > node ./bin/www
+item-app-1  | 2024-12-17T05:17:03.922940058Z 
+item-app-1  | 2024-12-17T05:17:04.346035845Z NODE_ENV: production
+item-app-1  | 2024-12-17T05:17:04.414414221Z /app/node_modules/mongodb/lib/mongo_client.js:421
+item-app-1  | 2024-12-17T05:17:04.414493729Z           throw err
+item-app-1  | 2024-12-17T05:17:04.414500905Z           ^
+item-app-1  | 2024-12-17T05:17:04.414506527Z 
+item-app-1  | 2024-12-17T05:17:04.414512176Z AssertionError [ERR_ASSERTION]: null == Error [MongoError]: failed to connect to server [item-db:27017] on first connect [Error: connect ECONNREFUSED 172.21.0.2:27017
+item-app-1  | 2024-12-17T05:17:04.414518304Z     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16) {
+item-app-1  | 2024-12-17T05:17:04.414523778Z   name: 'MongoError'
+item-app-1  | 2024-12-17T05:17:04.414529976Z }]
+item-app-1  | 2024-12-17T05:17:04.414535677Z     at Pool.<anonymous> (/app/node_modules/mongodb-core/lib/topologies/server.js:336:35)
+item-app-1  | 2024-12-17T05:17:04.414542571Z     at Pool.emit (events.js:400:28)
+item-app-1  | 2024-12-17T05:17:04.414546454Z     at Connection.<anonymous> (/app/node_modules/mongodb-core/lib/connection/pool.js:280:12)
+item-app-1  | 2024-12-17T05:17:04.414551455Z     at Object.onceWrapper (events.js:520:26)
+item-app-1  | 2024-12-17T05:17:04.414556778Z     at Connection.emit (e...
+item-app-1  | 2024-12-17T05:17:04.414562217Z     at /app/app.js:24:10
+item-app-1  | 2024-12-17T05:17:04.414567518Z     at connectCallback (/app/node_modules/mongodb/lib/mongo_client.js:527:5)
+item-app-1  | 2024-12-17T05:17:04.414573177Z     at /app/node_modules/mongodb/lib/mongo_client.js:418:11
+item-app-1  | 2024-12-17T05:17:04.414578471Z     at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+item-app-1  | 2024-12-17T05:17:04.414583696Z   generatedMessage: true,
+item-app-1  | 2024-12-17T05:17:04.414589217Z   code: 'ERR_ASSERTION',
+item-app-1  | 2024-12-17T05:17:04.414594809Z   actual: null,
+item-app-1  | 2024-12-17T05:17:04.414599918Z   expected: Error [MongoError]: failed to connect to server [item-db:27017] on first connect [Error: connect ECONNREFUSED 172.21.0.2:27017
+item-app-1  | 2024-12-17T05:17:04.414605660Z       at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16) {
+item-app-1  | 2024-12-17T05:17:04.414611120Z     name: 'MongoError'
+item-app-1  | 2024-12-17T05:17:04.414616641Z   }]
+item-app-1  | 2024-12-17T05:17:04.414621799Z       at Pool.<anonymous> (/app/node_modules/mongodb-core/lib/topologies/server.js:336:35)
+item-app-1  | 2024-12-17T05:17:04.414627390Z       at Pool.emit (events.js:400:28)
+item-app-1  | 2024-12-17T05:17:04.414632764Z       at Connection.<anonymous> (/app/node_modules/mongodb-core/lib/connection/pool.js:280:12)
+item-app-1  | 2024-12-17T05:17:04.414638494Z       at Object.onceWrapper (events.js:520:26)
+item-app-1  | 2024-12-17T05:17:04.414643684Z       at Connection.emit (events.js:400:28)
+item-app-1  | 2024-12-17T05:17:04.414648885Z       at Socket.<anonymous> (/app/node_modules/mongodb-core/lib/connection/connection.js:189:49)
+item-app-1  | 2024-12-17T05:17:04.414676962Z       at Object.onceWrapper (events.js:520:26)
+item-app-1  | 2024-12-17T05:17:04.414683352Z       at Socket.emit (events.js:400:28)
+item-app-1  | 2024-12-17T05:17:04.414688798Z       at emitErrorNT (internal/streams/destroy.js:106:8)
+item-app-1  | 2024-12-17T05:17:04.414693739Z       at emitErrorCloseNT (internal/streams/destroy.js:74:3),
+item-app-1  | 2024-12-17T05:17:04.414699226Z   operator: '=='
+item-app-1  | 2024-12-17T05:17:04.414704933Z }
+item-app-1  | 2024-12-17T05:17:04.429666581Z npm ERR! code ELIFECYCLE
+item-app-1  | 2024-12-17T05:17:04.429947478Z npm ERR! errno 1
+item-app-1  | 2024-12-17T05:17:04.437425103Z npm ERR! docker-software-delivery@1.0.0 start: `node ./bin/www`
+item-app-1  | 2024-12-17T05:17:04.437476443Z npm ERR! Exit status 1
+item-app-1  | 2024-12-17T05:17:04.437500312Z npm ERR! 
+item-app-1  | 2024-12-17T05:17:04.437671470Z npm ERR! Failed at the docker-software-delivery@1.0.0 start script.
+item-app-1  | 2024-12-17T05:17:04.437703796Z npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+item-app-1  | 2024-12-17T05:17:04.454059290Z 
+item-app-1  | 2024-12-17T05:17:04.454101771Z npm ERR! A complete log of this run can be found in:
+item-app-1  | 2024-12-17T05:17:04.454304094Z npm ERR!     /root/.npm/_logs/2024-12-17T05_17_04_438Z-debug.log
+item-app-1  | 2024-12-17T05:17:07.030631082Z 
+item-app-1  | 2024-12-17T05:17:07.030701586Z > docker-software-delivery@1.0.0 start /app
+item-app-1  | 2024-12-17T05:17:07.030709929Z > node ./bin/www
+item-app-1  | 2024-12-17T05:17:07.030715958Z 
+item-app-1  | 2024-12-17T05:17:07.661580272Z NODE_ENV: production
+item-app-1  | 2024-12-17T05:17:07.739307409Z Connected to database
+item-app-1  | 2024-12-17T05:19:13.406585183Z [0mGET / [32m200 [0m530.253 ms - 785[0m
+item-app-1  | 2024-12-17T05:19:13.569440004Z [0mGET /javascripts/dist/dist.min.js [32m200 [0m29.359 ms - 186999[0m
+item-app-1  | 2024-12-17T05:19:13.583578186Z [0mGET /stylesheets/style.css [32m200 [0m50.528 ms - 519[0m
+item-app-1  | 2024-12-17T05:19:13.785512760Z [0mGET /api [32m200 [0m7.959 ms - 2[0m
+item-app-1  | 2024-12-17T05:19:14.419512125Z [0mGET /favicon.ico [33m404 [0m14.443 ms - 270[0m
+item-app-1  | 2024-12-17T05:19:20.631548192Z [0mPOST /api [32m201 [0m104.936 ms - 53[0m
+item-app-1  | 2024-12-17T05:19:24.621032184Z [0mPOST /api [32m201 [0m3.353 ms - 52[0m
+item-app-1  | 2024-12-17T05:19:40.063055293Z [0mPOST /api [32m201 [0m2.650 ms - 55[0m
+item-app-1  | 2024-12-17T05:19:45.560290365Z [0mPOST /api [32m201 [0m2.857 ms - 55[0m
+item-app-1  | 2024-12-17T05:19:49.867422242Z [0mPOST /api [32m201 [0m50.318 ms - 60[0m
+item-app-1  | 2024-12-17T05:19:53.238171605Z [0mPOST /api [32m201 [0m2.349 ms - 57[0m
+item-db-1   | 2024-12-17T05:17:02.987730325Z 2024-12-17T05:17:02.985+0000 I CONTROL  [initandlisten] MongoDB starting : pid=1 port=27017 dbpath=/data/db 64-bit host=a08b25685dcb
+item-db-1   | 2024-12-17T05:17:02.987795343Z 2024-12-17T05:17:02.986+0000 I CONTROL  [initandlisten] db version v3.6.23
+item-db-1   | 2024-12-17T05:17:02.987803448Z 2024-12-17T05:17:02.986+0000 I CONTROL  [initandlisten] git version: d352e6a4764659e0d0350ce77279de3c1f243e5c
+item-db-1   | 2024-12-17T05:17:02.987809399Z 2024-12-17T05:17:02.986+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+item-db-1   | 2024-12-17T05:17:02.987815211Z 2024-12-17T05:17:02.986+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+item-db-1   | 2024-12-17T05:17:02.987820761Z 2024-12-17T05:17:02.986+0000 I CONTROL  [initandlisten] modules: none
+item-db-1   | 2024-12-17T05:17:02.987826460Z 2024-12-17T05:17:02.986+0000 I CONTROL  [initandlisten] build environment:
+item-db-1   | 2024-12-17T05:17:02.987832197Z 2024-12-17T05:17:02.986+0000 I CONTROL  [initandlisten]     distmod: ubuntu1604
+item-db-1   | 2024-12-17T05:17:02.987837834Z 2024-12-17T05:17:02.986+0000 I CONTROL  [initandlisten]     distarch: x86_64
+item-db-1   | 2024-12-17T05:17:02.987843687Z 2024-12-17T05:17:02.986+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+item-db-1   | 2024-12-17T05:17:02.987849521Z 2024-12-17T05:17:02.986+0000 I CONTROL  [initandlisten] options: { net: { bindIpAll: true } }
+item-db-1   | 2024-12-17T05:17:02.990655541Z 2024-12-17T05:17:02.990+0000 I -        [initandlisten] Detected data files in /data/db created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+item-db-1   | 2024-12-17T05:17:02.990793517Z 2024-12-17T05:17:02.990+0000 I STORAGE  [initandlisten] 
+item-db-1   | 2024-12-17T05:17:02.990815169Z 2024-12-17T05:17:02.990+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+item-db-1   | 2024-12-17T05:17:02.990821959Z 2024-12-17T05:17:02.990+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+item-db-1   | 2024-12-17T05:17:02.990829754Z 2024-12-17T05:17:02.990+0000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3377M,cache_overflow=(file_max=0M),session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),compatibility=(release="3.0",require_max="3.0"),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),statistics_log=(wait=0),verbose=(recovery_progress),
+item-db-1   | 2024-12-17T05:17:05.739797519Z 2024-12-17T05:17:05.739+0000 I STORAGE  [initandlisten] WiredTiger message [1734412625:739378][1:0x7f536916da40], txn-recover: Main recovery loop: starting at 2/4736
+item-db-1   | 2024-12-17T05:17:05.972612676Z 2024-12-17T05:17:05.972+0000 I STORAGE  [initandlisten] WiredTiger message [1734412625:972196][1:0x7f536916da40], txn-recover: Recovering log 2 through 3
+item-db-1   | 2024-12-17T05:17:06.133052952Z 2024-12-17T05:17:06.132+0000 I STORAGE  [initandlisten] WiredTiger message [1734412626:132445][1:0x7f536916da40], txn-recover: Recovering log 3 through 3
+item-db-1   | 2024-12-17T05:17:06.246541223Z 2024-12-17T05:17:06.246+0000 I STORAGE  [initandlisten] WiredTiger message [1734412626:246089][1:0x7f536916da40], txn-recover: Set global recovery timestamp: 0
+item-db-1   | 2024-12-17T05:17:06.340593017Z 2024-12-17T05:17:06.339+0000 I CONTROL  [initandlisten] 
+item-db-1   | 2024-12-17T05:17:06.340668733Z 2024-12-17T05:17:06.340+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+item-db-1   | 2024-12-17T05:17:06.340761892Z 2024-12-17T05:17:06.340+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+item-db-1   | 2024-12-17T05:17:06.340773634Z 2024-12-17T05:17:06.340+0000 I CONTROL  [initandlisten] 
+item-db-1   | 2024-12-17T05:17:06.340780882Z 2024-12-17T05:17:06.340+0000 I CONTROL  [initandlisten] 
+item-db-1   | 2024-12-17T05:17:06.340787790Z 2024-12-17T05:17:06.340+0000 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
+item-db-1   | 2024-12-17T05:17:06.340794797Z 2024-12-17T05:17:06.340+0000 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+item-db-1   | 2024-12-17T05:17:06.340802386Z 2024-12-17T05:17:06.340+0000 I CONTROL  [initandlisten] 
+item-db-1   | 2024-12-17T05:17:06.359828492Z 2024-12-17T05:17:06.359+0000 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/data/db/diagnostic.data'
+item-db-1   | 2024-12-17T05:17:06.363244058Z 2024-12-17T05:17:06.362+0000 I NETWORK  [initandlisten] listening via socket bound to 0.0.0.0
+item-db-1   | 2024-12-17T05:17:06.363291321Z 2024-12-17T05:17:06.362+0000 I NETWORK  [initandlisten] listening via socket bound to /tmp/mongodb-27017.sock
+item-db-1   | 2024-12-17T05:17:06.363298810Z 2024-12-17T05:17:06.363+0000 I NETWORK  [initandlisten] waiting for connections on port 27017
+item-db-1   | 2024-12-17T05:17:07.710889264Z 2024-12-17T05:17:07.710+0000 I NETWORK  [listener] connection accepted from 172.21.0.3:53870 #1 (1 connection now open)
+item-db-1   | 2024-12-17T05:17:07.731194739Z 2024-12-17T05:17:07.730+0000 I NETWORK  [conn1] received client metadata from 172.21.0.3:53870 conn1: { driver: { name: "nodejs", version: "2.2.36" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "5.15.167.4-microsoft-standard-WSL2" }, platform: "Node.js v14.21.3, LE, mongodb-core: 2.1.20" }
+item-db-1   | 2024-12-17T05:19:20.566376626Z 2024-12-17T05:19:20.565+0000 I STORAGE  [conn1] createCollection: accumulator.documents with generated UUID: c5a5765f-a151-45ef-b1a1-be4e44d67397

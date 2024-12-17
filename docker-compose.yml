@@ -2,11 +2,9 @@ version: '3.8'  # Specify the version of Docker Compose
 
 services:  # Define services
   item-app:  # Service for the application
-    build:  # Build configuration
-      context: .  # Context path for the build
-      dockerfile: Dockerfile  # Dockerfile used for building the image
+    image: ghcr.io/cembeliq/item-app:v1  # Use GitHub Container Registry image
     ports:  # Port mapping
-      - "8080:8080"  # Map port 8080 of the host to the container
+      - "80:8080"  # Map port 8080 of the host to the container
     depends_on:  # Service dependencies
       - item-db  # This service depends on 'item-db'
     restart: always  # Restart policy
