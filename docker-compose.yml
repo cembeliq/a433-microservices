@@ -1,0 +1,23 @@
+version: '3.8'  # Specify the version of Docker Compose
+
+services:  # Define services
+  item-app:  # Service for the application
+    build:  # Build configuration
+      context: .  # Context path for the build
+      dockerfile: Dockerfile  # Dockerfile used for building the image
+    ports:  # Port mapping
+      - "8080:8080"  # Map port 8080 of the host to the container
+    depends_on:  # Service dependencies
+      - item-db  # This service depends on 'item-db'
+    restart: always  # Restart policy
+
+  item-db:  # Service for the database
+    image: mongo:3  # Use MongoDB version 3 image
+    volumes:  # Volume configuration
+      - app-db:/data/db  # Mount 'app-db' volume to '/data/db'
+    restart: always  # Restart policy
+
+volumes:  # Define volumes
+  app-db:  # Volume for persisting database data
+
+
