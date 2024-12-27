@@ -46,11 +46,11 @@ jobs:
           name: Login to GitHub Container Registry
           # Log in to GitHub Container Registry using GITHUB_PAT
           command: |
-            echo "GITHUB_PAT: ${GITHUB_PAT}"
             echo ${GITHUB_PAT} | docker login ghcr.io -u cembeliq --password-stdin
-      - docker/push:  # Push Docker image to registry
-          image: ghcr.io/cembeliq/karsajobs
-          tag: latest
+            docker push ghcr.io/cembeliq/karsajobs:latest
+      # - docker/push:  # Push Docker image to registry
+      #     image: ghcr.io/cembeliq/karsajobs
+      #     tag: latest
 
 # Workflows define a list of jobs and their run order
 workflows:
