@@ -1,6 +1,15 @@
 # CircleCI configuration version
 version: 2.1
 
+# Pipeline parameters
+parameters:
+  GITHUB_TOKEN:
+    type: string
+    default: ${GITHUB_TOKEN}
+  CIRCLE_PROJECT_USERNAME:
+    type: string
+    default: ${CIRCLE_PROJECT_USERNAME}
+
 # Orbs are reusable packages of CircleCI configuration
 orbs:
   # Docker orb for Docker-related commands
@@ -40,14 +49,14 @@ jobs:
       - checkout  # Check out the code from GitHub
       - setup_remote_docker  # Set up remote Docker engine
       - docker/build:  # Build Docker image
-          image: ghcr.io/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          image: ghcr.io/<< pipeline.parameters.CIRCLE_PROJECT_USERNAME >>/<< pipeline.parameters.CIRCLE_PROJECT_REPONAME >>
           tag: latest
       - run:
           name: Login to GitHub Container Registry
           # Log in to GitHub Container Registry using GITHUB_TOKEN
-          command: echo $GITHUB_TOKEN | docker login ghcr.io -u $CIRCLE_PROJECT_USERNAME --password-stdin
+          command: echo << pipeline.parameters.GITHUB_TOKEN >> | docker login ghcr.io -u << pipeline.parameters.CIRCLE_PROJECT_USERNAME >> --password-stdin
       - docker/push:  # Push Docker image to registry
-          image: ghcr.io/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          image: ghcr.io/<< pipeline.parameters.CIRCLE_PROJECT_USERNAME >>/<< pipeline.parameters.CIRCLE_PROJECT_REPONAME >>
           tag: latest
 
 # Workflows define a list of jobs and their run order
