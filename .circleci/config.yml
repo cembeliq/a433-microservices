@@ -3,9 +3,9 @@ version: 2.1
 
 # Pipeline parameters
 parameters:
-  GITHUB_TOKEN:
+  GITHUB_PAT:
     type: string
-    default: ${GITHUB_TOKEN}
+    default: ${GITHUB_PAT}
 
 # Orbs are reusable packages of CircleCI configuration
 orbs:
@@ -50,8 +50,10 @@ jobs:
           tag: latest
       - run:
           name: Login to GitHub Container Registry
-          # Log in to GitHub Container Registry using GITHUB_TOKEN
-          command: echo ${GITHUB_TOKEN} | docker login ghcr.io -u ${CIRCLE_PROJECT_USERNAME} --password-stdin
+          # Log in to GitHub Container Registry using GITHUB_PAT
+          command: |
+            echo "GITHUB_PAT: ${GITHUB_PAT}"
+            echo ${GITHUB_PAT} | docker login ghcr.io -u ${CIRCLE_PROJECT_USERNAME} --password-stdin
       - docker/push:  # Push Docker image to registry
           image: ghcr.io/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
           tag: latest
