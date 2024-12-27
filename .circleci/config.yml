@@ -1,0 +1,55 @@
+# CircleCI configuration version
+version: 2.1
+
+# Orbs are reusable packages of CircleCI configuration
+orbs:
+  # Docker orb for Docker-related commands
+  docker: circleci/docker@2.1.0
+
+# Jobs define the actual work in a pipeline
+jobs:
+  # Job to lint the Dockerfile
+  lint-dockerfile:
+    docker:
+      # Use the Hadolint image for linting
+      - image: hadolint/hadolint:latest-debian
+    steps:
+      - checkout  # Check out the code from GitHub
+      - run:
+          name: Lint Dockerfile
+          command: hadolint Dockerfile  # Run Hadolint on the Dockerfile
+
+
+  # Job to build and push the Docker image
+  build-app-karsajobs-ui:
+    docker:
+      # Use a stable base image
+      - image: cimg/base:stable
+    steps:
+      - checkout  # Check out the code from GitHub
+      - setup_remote_docker  # Set up remote Docker engine
+      - docker/build:  # Build Docker image
+          image: ghcr.io/cembeliq/karsajobs-ui
+          tag: latest
+      - run:
+          name: Login to GitHub Container Registry
+          # Log in to GitHub Container Registry using GITHUB_PAT
+          command: |
+            echo ${GITHUB_PAT} | docker login ghcr.io -u cembeliq --password-stdin
+            docker push ghcr.io/cembeliq/karsajobs-ui:latest
+      # - docker/push:  # Push Docker image to registry
+      #     image: ghcr.io/cembeliq/karsajobs
+      #     tag: latest
+
+# Workflows define a list of jobs and their run order
+workflows:
+  version: 2
+  build-test-deploy:
+    jobs:
+      - lint-dockerfile  # Run Dockerfile linting
+      - build-app-karsajobs-ui:  # Build and push Docker image
+          requires:
+            - lint-dockerfile  # Only run after linting passes
+          filters:
+            branches:
+              only: karsajobs-ui  # Only run on the karsajobs-ui branch
