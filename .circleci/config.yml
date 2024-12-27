@@ -1,54 +1,66 @@
+# CircleCI configuration version
 version: 2.1
 
+# Orbs are reusable packages of CircleCI configuration
 orbs:
+  # Docker orb for Docker-related commands
   docker: circleci/docker@2.1.0
 
+# Jobs define the actual work in a pipeline
 jobs:
+  # Job to lint the Dockerfile
   lint-dockerfile:
     docker:
+      # Use the Hadolint image for linting
       - image: hadolint/hadolint:latest-debian
     steps:
-      - checkout
+      - checkout  # Check out the code from GitHub
       - run:
           name: Lint Dockerfile
-          command: hadolint Dockerfile
+          command: hadolint Dockerfile  # Run Hadolint on the Dockerfile
 
+  # Job to run tests for the application
   test-app:
     docker:
+      # Use Go 1.15 image for testing
       - image: cimg/go:1.15
     steps:
-      - checkout
+      - checkout  # Check out the code from GitHub
       - run:
           name: Run tests
+          # Run Go tests with verbose output, short mode, and no test caching
           command: go test -v -short --count=1 $(go list ./...)
 
+  # Job to build and push the Docker image
   build-app-karsajobs:
     docker:
+      # Use a stable base image
       - image: cimg/base:stable
     steps:
-      - checkout
-      - setup_remote_docker
-      - docker/build:
+      - checkout  # Check out the code from GitHub
+      - setup_remote_docker  # Set up remote Docker engine
+      - docker/build:  # Build Docker image
           image: ghcr.io/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           tag: latest
       - run:
           name: Login to GitHub Container Registry
+          # Log in to GitHub Container Registry using GITHUB_TOKEN
           command: echo $GITHUB_TOKEN | docker login ghcr.io -u $CIRCLE_PROJECT_USERNAME --password-stdin
-      - docker/push:
+      - docker/push:  # Push Docker image to registry
           image: ghcr.io/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           tag: latest
 
+# Workflows define a list of jobs and their run order
 workflows:
   version: 2
   build-test-deploy:
     jobs:
-      - lint-dockerfile
-      - test-app
-      - build-app-karsajobs:
+      - lint-dockerfile  # Run Dockerfile linting
+      - test-app  # Run application tests
+      - build-app-karsajobs:  # Build and push Docker image
           requires:
-            - lint-dockerfile
-            - test-app
+            - lint-dockerfile  # Only run after linting passes
+            - test-app  # Only run after tests pass
           filters:
             branches:
-              only: karsajobs
-
+              only: karsajobs  # Only run on the karsajobs branch
