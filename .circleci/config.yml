@@ -1,12 +1,6 @@
 # CircleCI configuration version
 version: 2.1
 
-# Pipeline parameters
-parameters:
-  GITHUB_PAT:
-    type: string
-    default: ${GITHUB_PAT}
-
 # Orbs are reusable packages of CircleCI configuration
 orbs:
   # Docker orb for Docker-related commands
@@ -46,14 +40,14 @@ jobs:
       - checkout  # Check out the code from GitHub
       - setup_remote_docker  # Set up remote Docker engine
       - docker/build:  # Build Docker image
-          image: ghcr.io/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
+          image: ghcr.io/cembeliq/karsajobs
           tag: latest
       - run:
           name: Login to GitHub Container Registry
           # Log in to GitHub Container Registry using GITHUB_PAT
           command: |
             echo "GITHUB_PAT: ${GITHUB_PAT}"
-            echo ${GITHUB_PAT} | docker login ghcr.io -u ${CIRCLE_PROJECT_USERNAME} --password-stdin
+            echo ${GITHUB_PAT} | docker login ghcr.io -u cembeliq --password-stdin
       - docker/push:  # Push Docker image to registry
           image: ghcr.io/cembeliq/karsajobs
           tag: latest
