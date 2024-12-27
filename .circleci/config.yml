@@ -55,7 +55,7 @@ jobs:
             echo "GITHUB_PAT: ${GITHUB_PAT}"
             echo ${GITHUB_PAT} | docker login ghcr.io -u ${CIRCLE_PROJECT_USERNAME} --password-stdin
       - docker/push:  # Push Docker image to registry
-          image: ghcr.io/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
+          image: ghcr.io/cembeliq/karsajobs
           tag: latest
 
 # Workflows define a list of jobs and their run order
