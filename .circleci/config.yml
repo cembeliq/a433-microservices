@@ -50,5 +50,5 @@ workflows:
             - test-app
           filters:
             branches:
-              only: main
+              only: karsajobs
 
